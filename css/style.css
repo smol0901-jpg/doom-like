@@ -25,6 +25,7 @@ html, body {
   cursor: none;
 }
 
+/* Screens */
 .screen {
   position: fixed;
   inset: 0;
@@ -35,7 +36,9 @@ html, body {
   z-index: 100;
 }
 
-.screen.hidden { display: none; }
+.screen.hidden {
+  display: none;
+}
 
 .menu-content {
   text-align: center;
@@ -50,7 +53,10 @@ html, body {
   margin-bottom: 0.2em;
 }
 
-.logo span { color: #fff; text-shadow: none; }
+.logo span {
+  color: #fff;
+  text-shadow: none;
+}
 
 .subtitle {
   color: #888;
@@ -95,6 +101,7 @@ html, body {
   font-size: 0.8rem;
 }
 
+/* Settings */
 .setting {
   display: flex;
   justify-content: space-between;
@@ -110,6 +117,7 @@ html, body {
   accent-color: #c00;
 }
 
+/* HUD */
 #hud {
   position: fixed;
   top: 0;
@@ -121,7 +129,9 @@ html, body {
   pointer-events: none;
 }
 
-#hud.hidden { display: none; }
+#hud.hidden {
+  display: none;
+}
 
 .hud-top {
   display: flex;
@@ -136,7 +146,10 @@ html, body {
   text-shadow: 0 0 6px #0f0;
 }
 
-.stat span { color: #fff; font-weight: bold; }
+.stat span {
+  color: #fff;
+  font-weight: bold;
+}
 
 .weapon-name {
   text-align: center;
@@ -146,6 +159,7 @@ html, body {
   letter-spacing: 2px;
 }
 
+/* Touch Controls */
 #touch-controls {
   position: fixed;
   inset: 0;
@@ -153,7 +167,9 @@ html, body {
   pointer-events: none;
 }
 
-#touch-controls.hidden { display: none; }
+#touch-controls.hidden {
+  display: none;
+}
 
 #joystick-zone {
   position: absolute;
@@ -183,6 +199,7 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: none;
 }
 
 #look-zone {
@@ -209,9 +226,20 @@ html, body {
   justify-content: center;
 }
 
-#btn-fire { bottom: 40px; right: 30px; }
-#btn-weapon { bottom: 130px; right: 40px; width: 55px; height: 55px; font-size: 1.3rem; }
+#btn-fire {
+  bottom: 40px;
+  right: 30px;
+}
 
+#btn-weapon {
+  bottom: 130px;
+  right: 40px;
+  width: 55px;
+  height: 55px;
+  font-size: 1.3rem;
+}
+
+/* Scores list */
 #scores-list {
   text-align: left;
   margin: 1.5rem auto;
@@ -223,6 +251,36 @@ html, body {
 #scores-list li {
   border-bottom: 1px solid #333;
   padding: 4px 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .menu-btn {
+    min-width: 180px;
+    padding: 12px 24px;
+  }
+  #joystick-zone {
+    width: 120px;
+    height: 120px;
+    bottom: 20px;
+    left: 15px;
+  }
+  #joystick-knob {
+    width: 48px;
+    height: 48px;
+  }
+  .touch-btn {
+    width: 60px;
+    height: 60px;
+  }
+  #btn-fire {
+    bottom: 30px;
+    right: 20px;
+  }
+  #btn-weapon {
+    bottom: 110px;
+    right: 30px;
+  }
 }
 
 #minimap {
@@ -237,7 +295,9 @@ html, body {
   pointer-events: none;
 }
 
-#minimap.hidden { display: none; }
+#minimap.hidden {
+  display: none;
+}
 
 .use-btn {
   bottom: 40px !important;
@@ -248,12 +308,12 @@ html, body {
 }
 
 @media (max-width: 600px) {
-  .menu-btn { min-width: 180px; padding: 12px 24px; }
-  #joystick-zone { width: 120px; height: 120px; bottom: 20px; left: 15px; }
-  #joystick-knob { width: 48px; height: 48px; }
-  .touch-btn { width: 60px; height: 60px; }
-  #btn-fire { bottom: 30px; right: 20px; }
-  #btn-weapon { bottom: 110px; right: 30px; }
-  #minimap { width: 80px; height: 80px; bottom: 160px; }
-  .use-btn { right: 90px !important; }
+  #minimap {
+    width: 80px;
+    height: 80px;
+    bottom: 160px;
+  }
+  .use-btn {
+    right: 90px !important;
+  }
 }

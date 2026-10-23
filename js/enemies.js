@@ -63,7 +63,7 @@ export class Pickup {
   constructor(x, y, type) {
     this.x = x;
     this.y = y;
-    this.type = type;
+    this.type = type; // health | ammo
     this.alive = true;
   }
 }
