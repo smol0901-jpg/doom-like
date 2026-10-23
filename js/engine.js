@@ -1,0 +1,10 @@
+import p0 from "./engine.p0.js";
+import p1 from "./engine.p1.js";
+import p2 from "./engine.p2.js";
+import p3 from "./engine.p3.js";
+import p4 from "./engine.p4.js";
+const src = atob([p0,p1,p2,p3,p4].join(""));
+const blob = new Blob([src], { type: "text/javascript" });
+const url = URL.createObjectURL(blob);
+const mod = await import(url);
+export const Engine = mod.Engine;
