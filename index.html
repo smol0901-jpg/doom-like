@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#cc0000">
+  <meta name="description" content="DOOM-LIKE — raycasting FPS в стиле классического Doom. PWA, офлайн.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <title>DOOM-LIKE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="menu" class="screen">
+    <div class="menu-content">
+      <h1 class="logo">DOOM<span>-LIKE</span></h1>
+      <p class="subtitle">Raycasting FPS · PWA · 5 уровней</p>
+      <div class="menu-buttons">
+        <button id="btn-newgame" class="menu-btn">Новая игра</button>
+        <button id="btn-continue" class="menu-btn" disabled>Продолжить</button>
+        <button id="btn-scores" class="menu-btn">Рекорды</button>
+        <button id="btn-settings" class="menu-btn">Настройки</button>
+      </div>
+      <p class="hint">ПК: WASD + мышь · Телефон: джойстик + свайп<br>Можно установить как приложение (PWA)</p>
+    </div>
+  </div>
+
+  <div id="scores-screen" class="screen hidden">
+    <div class="menu-content">
+      <h2>Рекорды</h2>
+      <ol id="scores-list"></ol>
+      <button id="btn-scores-back" class="menu-btn">Назад</button>
+    </div>
+  </div>
+
+  <div id="settings-screen" class="screen hidden">
+    <div class="menu-content">
+      <h2>Настройки</h2>
+      <label class="setting"><span>Чувств. мыши</span><input type="range" id="mouse-sens" min="0.5" max="3" step="0.1" value="1.5"></label>
+      <label class="setting"><span>Чувств. тача</span><input type="range" id="touch-sens" min="0.5" max="3" step="0.1" value="1.2"></label>
+      <label class="setting"><span>Звук</span><input type="checkbox" id="sound-toggle" checked></label>
+      <label class="setting"><span>Миникарта</span><input type="checkbox" id="minimap-toggle" checked></label>
+      <button id="btn-settings-back" class="menu-btn">Назад</button>
+    </div>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="stat">HP <span id="hp">100</span></div>
+      <div class="stat">AMMO <span id="ammo">50</span></div>
+      <div class="stat">LVL <span id="level">1</span></div>
+      <div class="stat">SCORE <span id="score">0</span></div>
+    </div>
+    <div class="weapon-name" id="weapon-name">ПИСТОЛЕТ</div>
+    <canvas id="minimap" width="120" height="120"></canvas>
+  </div>
+
+  <div id="touch-controls" class="hidden">
+    <div id="joystick-zone"><div id="joystick-base"><div id="joystick-knob"></div></div></div>
+    <div id="look-zone"></div>
+    <button id="btn-fire" class="touch-btn">🔥</button>
+    <button id="btn-weapon" class="touch-btn">🔫</button>
+    <button id="btn-use" class="touch-btn use-btn">🚪</button>
+  </div>
+
+  <div id="overlay" class="screen hidden">
+    <div class="menu-content">
+      <h2 id="overlay-title">GAME OVER</h2>
+      <p id="overlay-text"></p>
+      <button id="btn-overlay" class="menu-btn">В меню</button>
+    </div>
+  </div>
+
+  <div id="pause-screen" class="screen hidden">
+    <div class="menu-content">
+      <h2>ПАУЗА</h2>
+      <button id="btn-resume" class="menu-btn">Продолжить</button>
+      <button id="btn-save-quit" class="menu-btn">Сохранить и выйти</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(console.warn);
+    }
+  </script>
+</body>
+</html>
